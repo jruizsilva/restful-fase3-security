@@ -1,0 +1,37 @@
+spring:
+  profiles:
+    active: dev
+  main:
+    banner-mode: 'off'
+  output:
+    ansi:
+      enabled: always
+server:
+  servlet:
+    context-path: /api
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    password: admin
+    url: jdbc:postgresql://localhost:5432/springsecurity
+    username: postgres
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+---
+spring:
+  config:
+    activate:
+      on-profile: qa
+  datasource:
+    password: admin
+    url: jdbc:postgresql://localhost:5432/springsecurity
+    username: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
